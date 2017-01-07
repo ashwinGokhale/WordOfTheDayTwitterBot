@@ -1,0 +1,19 @@
+{
+  "name": "twitbot",
+  "version": "1.0.0",
+  "description": "Twitter Bot",
+  "main": "bot.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "request": "^2.79.0",
+    "swagger-client": "^2.1.30",
+    "twit": "^2.2.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ashwin Gokhale",
+  "license": "ISC"
+}
