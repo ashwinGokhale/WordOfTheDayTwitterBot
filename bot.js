@@ -11,6 +11,8 @@ var schedule = require('node-schedule');
 // Authenticate API keys and create new Twit object
 var T = new Twit(config);
 
+tweetSomething("This is a second test");
+
 // Schedule a new tweet every day at 12:01 PM
 schedule.scheduleJob({hour: 00, minute: 01}, function(){
 
