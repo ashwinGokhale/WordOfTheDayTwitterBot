@@ -1,24 +1,32 @@
 /**
  * Created by Ashwin on 1/6/2017.
  */
+
+// Import: Twit, API keys, request
 var Twit = require('twit');
 var config = require('./config');
 var request = require("request");
+var schedule = require('node-schedule');
 
-
+// Authenticate API keys and create new Twit object
 var T = new Twit(config);
 
-var d = new Date();
-var date = d.getFullYear() + "-" + padDigits(d.getUTCMonth() + 1, 2) + "-" +  padDigits(d.getDay() + 1, 2);
+// Schedule a new tweet every day at 12:01 PM
+schedule.scheduleJob({hour: 00, minute: 01}, function(){
 
-var url = "http://api.wordnik.com:80/v4/words.json/wordOfTheDay?date=" + date + "&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
+    // Create date every day and format it for the api url call
+    var d = new Date();
+    var date = d.getFullYear() + "-" + padDigits(d.getUTCMonth() + 1, 2) + "-" +  padDigits(d.getDay() + 1, 2);
+
+    // Insert new date into the url
+    var url = "http://api.wordnik.com:80/v4/words.json/wordOfTheDay?date=" + date + "&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
+
+    sendTweets(url);
+});
 
 
-tweetSomething("This is a test");
-//setInterval(sendTweets, 1000*60*60*24);
-
-function sendTweets() {
-    console.log("About to tweet something");
+function sendTweets(url) {
+    // Make a request to the Wordnik API for word of the day
     request({
         url: url,
         json: true
