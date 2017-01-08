@@ -12,7 +12,7 @@ var schedule = require('node-schedule');
 var T = new Twit(config);
 
 // Schedule a new tweet every day at 12:01 PM
-schedule.scheduleJob({hour: 02, minute: 19}, function(){
+var j = schedule.scheduleJob({hour: 02, minute: 25}, function(){
 
     // Create date every day and format it for the api url call
     var d = new Date();
