@@ -16,10 +16,7 @@ var schedule = require('node-schedule');
 // Authenticate API keys and create new Twit object
 var T = new Twit(config);
 
-// Schedule a new tweet every day at 12:01 PM
-var j = schedule.scheduleJob({hour: 12, minute: 1}, function(){
-    sendTweets();
-});
+setInterval(sendTweets, 1000*60*60*24);
 
 
 function sendTweets() {
@@ -50,8 +47,6 @@ function tweetSomething(text) {
     var tweet = {
         status: text
     };
-
-
 
     // If tweet exceeds the 140 character limit, split the tweet and finish it in a reply chain
     if (tweet.status.length > 140){
