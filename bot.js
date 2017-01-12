@@ -2,12 +2,6 @@
  * Created by Ashwin on 1/6/2017.
  */
 
-// process.env['access_token'] = "817642973819125760-SeertG9oMmI4qRNeVbf2d6fPy1JHqMM";
-// process.env['access_token_secret'] = "DQuJitMbwQNhGGut1ceT1XPNLqEEX43sqYqlTjjNwnpQE";
-// process.env['consumer_key'] = "5b1RGsfmljoaoIr3kywC1Mdde";
-// process.env['consumer_secret'] = "LQB0szxg9qqJ24iyJkXthuNwG5hQr9wCO40vueiOkKdoU8dwie";
-// process.env['access_key'] = "e3d33762e4a0e893916110068f50f29100793a317a2c6b40f";
-
 // Import: Twit, API keys, request
 var Twit = require('twit');
 var config = require('./config');
@@ -17,8 +11,7 @@ var schedule = require('node-schedule');
 // Authenticate API keys and create new Twit object
 var T = new Twit(config);
 
-//setInterval(sendTweets, 1000*60*60*24);
-tweetSomething("Everything is all good");
+setInterval(sendTweets, 1000*60*60*24);
 
 
 function sendTweets() {
@@ -104,7 +97,7 @@ function tweetSomething(text) {
     // Otherwise send tweet are usual
      else {
         T.post('statuses/update', tweet, function (err, data, response) {
-            console.log("Just sent tweet:\n" + tweet);
+            console.log("Just sent tweet:\n" + JSON.stringify(tweet));
             console.log("Error: " + err);
         });
     }
