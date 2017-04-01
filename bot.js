@@ -45,13 +45,13 @@ function tweetSomething(text) {
     var count = 0;
     while (textArr.length > 0){
         var word = textArr[0];
-        if (count + word.length + 1 < 140){
+        if (count + word.length + 1 < 137) {
             count += word.length + 1;
             textArr.shift();
             tweetTemp.push(word);
         }
         else{
-            toTweet.push(tweetTemp.join(" "));
+            toTweet.push(tweetTemp.join(" ") + "...");
             count = 16; // Length of @WordOfTheDayRobotUSA
             tweetTemp = [];
         }

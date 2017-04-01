@@ -4,7 +4,6 @@
   "description": "Twitter Bot",
   "main": "bot.js",
   "dependencies": {
-    "express": "^4.14.0",
     "node-schedule": "^1.2.0",
     "request": "^2.79.0",
     "twit": "^2.2.5"
